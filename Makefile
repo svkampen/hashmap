@@ -7,6 +7,7 @@ STATIC_CFLAGS=-c
 static:
 	mkdir -p bin
 	cd src; $(CC) $(CFLAGS) $(STATIC_CFLAGS) $(SHARED_FILES); ar rcs ../bin/libhashmap.a *.o
+	rm src/*.o
 
 shared:
 	mkdir -p bin
