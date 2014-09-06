@@ -1,3 +1,6 @@
+#ifndef _HASHMAP_H_
+#define _HASHMAP_H_
+
 #include "list.h"
 #include <inttypes.h>
 
@@ -20,3 +23,4 @@ void hashmap_set(char *key, void *ptr, struct hashmap *ht);
 struct hashmap *hashmap_create(int size);
 void hashmap_destroy(struct hashmap *hm);
 void hashmap_resize(struct hashmap *ht);
+#endif

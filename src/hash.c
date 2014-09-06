@@ -1,4 +1,4 @@
-#include "hash.h"
+#include "hashmap.h"
 #include "hashfn.h"
 #include <string.h>
 
