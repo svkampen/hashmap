@@ -80,6 +80,11 @@ struct double_link *get_list_head(struct double_link *list) {
 void free_list(struct double_link *list) {
 	struct double_link *head = get_list_head(list);
 
+	if (head->next == NULL) {
+		free(head);
+		return;
+	}
+
 	for (struct double_link *l = head->next; l != NULL; l = l->next) {
 		if (l->next == NULL) {
 			free(l);

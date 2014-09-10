@@ -18,9 +18,12 @@ typedef struct {
 	void *value;
 } hashed_pair;
 
+int hashmap_getindex(char *key, struct hashmap *ht);
 void *hashmap_get(char *key, struct hashmap *ht);
 void hashmap_set(char *key, void *ptr, struct hashmap *ht);
+void hashmap_remove(char *key, struct hashmap *hm);
 struct hashmap *hashmap_create(int size);
 void hashmap_destroy(struct hashmap *hm);
 void hashmap_resize(struct hashmap *ht);
+void hashmap_foreach(struct hashmap *hm, void (*fn)(char*, void*));
 #endif

@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-std=c99 -O2 -I../include
+CFLAGS=-std=gnu11 -O2 -I../include -ggdb -g3
 SHARED_CFLAGS=-shared -fpic -o ../bin/libhashmap.so
 SHARED_FILES=hash.c list.c hashfn.c
 STATIC_CFLAGS=-c
