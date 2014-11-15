@@ -1,0 +1,8 @@
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${hashmap_SOURCE_DIR}/bin)
+set(HASHMAP_SRC_FILES hash.c list.c hashfn.c)
+
+INCLUDE_DIRECTORIES(${hashmap_SOURCE_DIR}/include)
+
+ADD_DEFINITIONS(-std=gnu11 -O2 -ggdb -g3)
+
+ADD_LIBRARY(hashmap SHARED ${HASHMAP_SRC_FILES})
