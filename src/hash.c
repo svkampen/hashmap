@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define LOAD_FACTOR (2/3)
+#define LOAD_FACTOR (2/3.0f)
 
 static uint32_t seed = 0xE3C1AE9D;
 
