@@ -135,9 +135,6 @@ void hashmap_resize(struct hashmap *ht) {
 
 			push_val(new_arr[index], (void*)p);
 		}
-	}
-
-	for (int i = 0; i < (ht->size / 2); ++i) {
 		free_list(ht->arr[i]);
 	}
 
@@ -178,14 +175,8 @@ void hashmap_destroy(struct hashmap *hm) {
 				free(pair->key);
 				free(pair);
 			}
-			
-			if (i->next != NULL) {
-				free(i->prev);
-			} else {
-				free(i);
-				break;
-			}
 		}
+		free_list(hm->arr[j]);
 	}
 
 	free(hm->arr);
