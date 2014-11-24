@@ -66,8 +66,10 @@ void hashmap_remove(char *key, struct hashmap *hm) {
 		hashed_pair *p = (hashed_pair*)i->ptr;
 
 		if (strcmp(p->key, key) == 0) {
+			free(p->key);
 			free(p);
 			i->ptr = NULL;
+			hm->length--;
 			break;
 		}
 	}
