@@ -147,11 +147,12 @@ struct hashmap *hashmap_create(int size) {
 	ht->length = 0;
 	ht->size = size;
 
-	ht->arr = calloc(size, sizeof(Link*));
-	
+	ht->arr = calloc(ht->size, sizeof(Link*));
+
 	for (int i = 0; i < ht->size; ++i) {
 		ht->arr[i] = calloc(1, sizeof(Link));
 	}
+
 	return ht;
 }
 
