@@ -51,7 +51,7 @@ void remove_link(struct double_link *link) {
 		free(link);
 		return;
 	}
-	
+
 	if (link->next == NULL) {
 		link->prev->next = NULL;
 	} else if (link->prev == NULL) {
@@ -80,16 +80,9 @@ struct double_link *get_list_head(struct double_link *list) {
 void free_list(struct double_link *list) {
 	struct double_link *head = get_list_head(list);
 
-	if (head->next == NULL) {
-		free(head);
-		return;
-	}
-
-	for (struct double_link *l = head->next; l != NULL; l = l->next) {
-		if (l->next == NULL) {
-			free(l);
-		} else {
-			free(l->prev);
-		}
+	struct double_link *next = NULL;
+	for(struct double_link *cur = head; cur != NULL; cur = next) {
+		next = cur->next;
+		free(cur);
 	}
 }
