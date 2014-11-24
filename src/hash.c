@@ -13,10 +13,10 @@ int hashmap_getindex(char *key, struct hashmap *ht) {
 
 	MurmurHash3_x64_128((void*)key, len, seed, (void*)hashes);
 	// the hash is 128-bit, but we'll only use the first 64 bits.
-	
+
 	int index = (hashes[0] % ht->size);
-        free(hashes);
-        return index;
+	free(hashes);
+	return index;
 }
 
 void *hashmap_get(char *key, struct hashmap *ht) {
@@ -25,7 +25,7 @@ void *hashmap_get(char *key, struct hashmap *ht) {
 
 	MurmurHash3_x64_128((void*)key, len, seed, (void*)hashes);
 	// the hash is 128-bit, but we'll only use the first 64 bits.
-	
+
 	int index = (hashes[0] % ht->size);
 
 	free(hashes);
@@ -110,7 +110,7 @@ void hashmap_set(char *key, void *ptr, struct hashmap *ht) {
 	pair->value = ptr;
 
 	free(hashes);
-	
+
 	ht->length++;
 
 	push_val(list, (void*)pair);
@@ -119,7 +119,7 @@ void hashmap_set(char *key, void *ptr, struct hashmap *ht) {
 void hashmap_resize(struct hashmap *ht) {
 	ht->size *= 2;
 	Link **new_arr = calloc(ht->size, sizeof(Link*));
-	
+
 	for (int i = 0; i < ht->size; ++i) {
 		new_arr[i] = calloc(1, sizeof(Link));
 	}
