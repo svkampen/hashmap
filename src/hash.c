@@ -167,6 +167,20 @@ void hashmap_foreach(struct hashmap *hm, void (*fn)(char*, void*)) {
 	}
 }
 
+char **hashmap_keys(struct hashmap *hm) {
+	char **keys = calloc(hm->length, sizeof(char*));
+	int key_index = 0;
+	for (int i = 0; i < hm->size; ++i) {
+		for (Link *j = hm->arr[i]; j != NULL; j = j->next) {
+			if (j->ptr != NULL) {
+				hashed_pair *pair = (hashed_pair*)j->ptr;
+				keys[key_index++] = pair->key;
+			}
+		}
+	}
+	return keys;
+}
+
 void hashmap_destroy(struct hashmap *hm) {
 	// first, free all linked lists.
 	for (int j = 0; j < hm->size; ++j) {

@@ -26,4 +26,5 @@ struct hashmap *hashmap_create(int size);
 void hashmap_destroy(struct hashmap *hm);
 void hashmap_resize(struct hashmap *ht);
 void hashmap_foreach(struct hashmap *hm, void (*fn)(char*, void*));
+char **hashmap_keys(struct hashmap *hm);
 #endif
